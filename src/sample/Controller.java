@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 // import javafx.scene.input.Clipboard;
 // import javafx.scene.input.DataFormat;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 
 public class Controller {
@@ -13,9 +14,11 @@ public class Controller {
     @FXML
     private TextArea texto;
     @FXML
-    private MenuItem Copiar, Enganxar, Cortar;
+    private MenuItem Copiar, Cortar;
     @FXML
     private CheckMenuItem Calibri, Courier, Consolas, size12, size14, size24;
+    @FXML
+    private Button btnCopiar, btnTallar;
 
     /**
      * Capturar evento click del Ratón.
@@ -23,8 +26,20 @@ public class Controller {
      */
     public void onClick(ActionEvent e) {
 
-        MenuItem itemAux = (MenuItem) e.getSource();
-        String x = itemAux.getText();
+        /* Auxiliares */
+        MenuItem itemAux;
+        Button btnToolBar;
+        String x;
+        Class classAUX = e.getSource().getClass();
+
+        if (classAUX == Button.class) {
+            btnToolBar = (Button) e.getSource();
+            x = btnToolBar.getText();
+        } else {
+            itemAux = (MenuItem) e.getSource();
+            x = itemAux.getText();
+        }
+
         System.out.println(x);
 
         switch (x) {
@@ -113,7 +128,15 @@ public class Controller {
                 texto.setFont(Font.font(texto.getFont().getFamily(), 24));
                 if (size12.isSelected())  size12.setSelected(false);
                 if (size14.isSelected())  size14.setSelected(false);
-                break;
         }
     }
+
+    /**
+     * Inicializar el comboBox
+     */
+    public void initialize(){
+        // btnCopiar.setDisable(true);
+        // btnTallar.setDisable(true);
+    }
+
 }
