@@ -12,64 +12,44 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <children>
-      <BorderPane prefHeight="500.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <center>
-            <TextArea fx:id="texto" prefHeight="430.0" prefWidth="700.0" promptText="Write" BorderPane.alignment="CENTER" />
-         </center>
-         <top>
-            <VBox prefHeight="23.0" prefWidth="700.0" BorderPane.alignment="CENTER">
-               <children>
-                  <MenuBar prefHeight="32.0" prefWidth="710.0">
-                     <menus>
-                        <Menu mnemonicParsing="false" text="Fitxer">
-                           <items>
-                              <MenuItem mnemonicParsing="false" onAction="#onClick" text="Tancar" />
-                           </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" onShowing="#showing" text="Editar">
-                           <items>
-                              <MenuItem fx:id="Copiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
-                              <MenuItem fx:id="Cortar" mnemonicParsing="false" onAction="#onClick" text="Tallar" />
-                              <MenuItem fx:id="Enganxar" mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
-                              <MenuItem mnemonicParsing="false" onAction="#onClick" text="Desfer" />
-                           </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Opcions">
-                           <items>
-                              <Menu mnemonicParsing="false" text="Font">
-                                 <items>
-                                    <CheckMenuItem fx:id="Calibri" mnemonicParsing="false" onAction="#onSelected" text="Calibri" />
-                                    <CheckMenuItem fx:id="Courier" mnemonicParsing="false" onAction="#onSelected" text="Courier New" />
-                                    <CheckMenuItem fx:id="Consolas" mnemonicParsing="false" onAction="#onSelected" text="Consolas" />
-                                 </items>
-                              </Menu>
-                              <Menu mnemonicParsing="false" text="Tamany">
-                                 <items>
-                                    <CheckMenuItem fx:id="size12" mnemonicParsing="false" onAction="#onSelected" text="12px" />
-                                    <CheckMenuItem fx:id="size14" mnemonicParsing="false" onAction="#onSelected" text="14px" />
-                                    <CheckMenuItem fx:id="size24" mnemonicParsing="false" onAction="#onSelected" text="24px" />
-                                 </items>
-                              </Menu>
-                           </items>
-                        </Menu>
-                        <Menu mnemonicParsing="false" text="Ajuda">
-                          <items>
-                            <MenuItem mnemonicParsing="false" onAction="#onClick" text="About" />
-                          </items>
-                        </Menu>
-                     </menus>
-                  </MenuBar>
-                  <ToolBar prefHeight="40.0" prefWidth="200.0">
-                    <items>
-                        <Button fx:id="btnCopiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
-                        <Button fx:id="btnTallar" mnemonicParsing="false" onAction="#onClick" text="Tallar" />
-                      <Button fx:id="tbnEnganxar" mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
-                    </items>
-                  </ToolBar>
-               </children>
-            </VBox>
-         </top>
-      </BorderPane>
-   </children>
+   <BorderPane prefHeight="500.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <center>
+         <TextArea fx:id="texto" prefHeight="430.0" prefWidth="700.0" promptText="Write" BorderPane.alignment="CENTER" />
+      </center>
+      <top>
+         <VBox prefHeight="23.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+            <MenuBar prefHeight="32.0" prefWidth="710.0">
+               <Menu mnemonicParsing="false" text="Fitxer">
+                  <MenuItem mnemonicParsing="false" onAction="#onClick" text="Tancar" />
+               </Menu>
+               <Menu mnemonicParsing="false" onShowing="#onShowing" text="Editar">
+                  <MenuItem fx:id="Copiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
+                  <MenuItem fx:id="Cortar" mnemonicParsing="false" onAction="#onClick" text="Tallar" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClick" text="Desfer" />
+               </Menu>
+               <Menu mnemonicParsing="false" text="Opcions">
+                  <Menu mnemonicParsing="false" text="Font">
+                     <CheckMenuItem fx:id="Calibri" mnemonicParsing="false" onAction="#onClick" text="Calibri" />
+                     <CheckMenuItem fx:id="Courier" mnemonicParsing="false" onAction="#onClick" text="Courier New" />
+                     <CheckMenuItem fx:id="Consolas" mnemonicParsing="false" onAction="#onClick" text="Consolas" />
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Tamany">
+                     <CheckMenuItem fx:id="size12" mnemonicParsing="false" onAction="#onClick" text="12px" />
+                     <CheckMenuItem fx:id="size14" mnemonicParsing="false" onAction="#onClick" text="14px" />
+                     <CheckMenuItem fx:id="size24" mnemonicParsing="false" onAction="#onClick" text="24px" />
+                  </Menu>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Ajuda">
+                  <MenuItem mnemonicParsing="false" onAction="#onClick" text="About" />
+               </Menu>
+            </MenuBar>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+               <Button mnemonicParsing="false" onAction="#onClick" text="Copiar" />
+               <Button mnemonicParsing="false" onAction="#onClick" text="Tallar" />
+               <Button mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
+            </ToolBar>
+         </VBox>
+      </top>
+   </BorderPane>
 </AnchorPane>
