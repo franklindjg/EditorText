@@ -131,12 +131,7 @@ public class Controller {
         }
     }
 
-    /**
-     * Inicializar el comboBox
-     */
-    public void initialize(){
-        // btnCopiar.setDisable(true);
-        // btnTallar.setDisable(true);
-    }
+    /* public void initialize(){
+    }*/
 
 }
