@@ -37,6 +37,7 @@ public class Controller {
         String x;
         Class classAUX = e.getSource().getClass();
 
+        /* Tipo? */
         if (classAUX == Button.class) {
             btn = (Button) e.getSource();
             x = btn.getText();
