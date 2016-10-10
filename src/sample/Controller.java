@@ -35,21 +35,21 @@ public class Controller {
     Parent root;
 
 
-    /* Capturar cualquier evento */
+    // Compartiendo evento onAction.
     public void onClick(ActionEvent e) {
 
-        /* Auxiliares */
+        // Auxiliares
         MenuItem itemAux;
         CheckMenuItem checkItemAux;
         Button btn;
         String x;
-        Class classAUX = e.getSource().getClass();
+        Class classReference = e.getSource().getClass();
 
-        /* Tipo? */
-        if (classAUX == Button.class) {
+        // Clase?
+        if (classReference == Button.class) {
             btn = (Button) e.getSource();
             x = btn.getText();
-        } else if(classAUX == CheckMenuItem.class) {
+        } else if(classReference == CheckMenuItem.class) {
             checkItemAux = (CheckMenuItem) e.getSource();
             x = checkItemAux.getText();
         } else {
@@ -64,7 +64,7 @@ public class Controller {
                 Platform.exit();
                 break;
             case "Obre":
-                obre();
+                texto.setText(importarTexto());
                 break;
             case "Copiar":
                 texto.copy();
@@ -117,7 +117,9 @@ public class Controller {
         }
     }
 
-    /* Detectar cuando se desplega el menú Editar */
+    /**
+     * Deshabilitar opción Copiar y Cortar si el usuario no selecciona ningún texto.
+     */
     public void onShowing() {
         if (texto.getSelectedText().equalsIgnoreCase("")) {
             Copiar.setDisable(true);
@@ -128,24 +130,33 @@ public class Controller {
         }
     }
 
-    public void obre() {
-        FileChooser n = new FileChooser();
-        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de Text","*.txt");
-        n.setTitle("Selecciona un fitxer");
-        n.getExtensionFilters().add(filtro);
-        Stage mainStage = (Stage) root.getScene().getWindow();
-        File selectedFile = n.showOpenDialog(mainStage);
+    /**
+     * Mostar diálogo para seleccionar un fichero.
+     * @return String contenido del fichero seleccionado.
+     */
+    private String importarTexto() {
 
-        try {
-            FileInputStream f1 = new FileInputStream(selectedFile);
-            int content;
-            while ((content = f1.read()) != -1 ) {
-                System.out.println((char) content);
+        FileChooser chooser = new FileChooser();
+        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de Text","*.txt");
+        chooser.setTitle("Selecciona un fitxer");
+        chooser.getExtensionFilters().add(filtro);
+        Stage mainStage = (Stage) root.getScene().getWindow();
+        // Abriendo diálogo en nuestro contexto -> "Stage"
+        File selectedFile = chooser.showOpenDialog(mainStage);
+
+        String text = "";
+
+        if (selectedFile != null) {
+            try {
+                // Cargar contenido del fichero seleccionado.
+                BufferedReader f1 = new BufferedReader(new FileReader(selectedFile));
+                while (f1.ready()) {
+                    text += f1.readLine()+"\n";
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        return text;
     }
 }
