@@ -28,6 +28,7 @@ public class Controller {
     private CheckMenuItem size24;
 
 
+    /* Capturar cualquier evento */
     public void onClick(ActionEvent e) {
 
         /* Auxiliares */
