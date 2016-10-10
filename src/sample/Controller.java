@@ -190,10 +190,10 @@ public class Controller {
 
     /**
      * Cargar contenido de un fichero pasado por parámetro.
-     * @param selectedFile
+     * @param selectedFile fichero.
      * @return String contenido del fichero.
      */
-    public String openFile(File selectedFile) {
+    private String openFile(File selectedFile) {
         String text = "";
         if (selectedFile != null) {
             try {
