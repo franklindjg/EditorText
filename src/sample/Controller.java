@@ -3,8 +3,13 @@ package sample;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.*;
 
 public class Controller {
 
@@ -26,6 +31,8 @@ public class Controller {
     private CheckMenuItem size14;
     @FXML
     private CheckMenuItem size24;
+    @FXML
+    Parent root;
 
 
     /* Capturar cualquier evento */
@@ -55,6 +62,9 @@ public class Controller {
         switch (x) {
             case "Tancar":
                 Platform.exit();
+                break;
+            case "Obre":
+                obre();
                 break;
             case "Copiar":
                 texto.copy();
@@ -115,6 +125,27 @@ public class Controller {
         } else {
             Copiar.setDisable(false);
             Cortar.setDisable(false);
+        }
+    }
+
+    public void obre() {
+        FileChooser n = new FileChooser();
+        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de Text","*.txt");
+        n.setTitle("Selecciona un fitxer");
+        n.getExtensionFilters().add(filtro);
+        Stage mainStage = (Stage) root.getScene().getWindow();
+        File selectedFile = n.showOpenDialog(mainStage);
+
+        try {
+            FileInputStream f1 = new FileInputStream(selectedFile);
+            int content;
+            while ((content = f1.read()) != -1 ) {
+                System.out.println((char) content);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
