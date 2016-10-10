@@ -74,15 +74,19 @@ public class Controller {
                 break;
             case "Copiar":
                 texto.copy();
+                texto.requestFocus();
                 break;
             case "Tallar":
                 texto.cut();
+                texto.requestFocus();
                 break;
             case "Enganxar":
                 texto.paste();
+                texto.requestFocus();
                 break;
             case "Desfer":
                 texto.undo();
+                texto.requestFocus();
                 break;
             case "Calibri":
                 texto.setFont(Font.font("Calibri", texto.getFont().getSize()));
