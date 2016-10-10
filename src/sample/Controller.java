@@ -155,15 +155,19 @@ public class Controller {
         Stage mainStage = (Stage) root.getScene().getWindow();
         // Abriendo diálogo en nuestro contexto -> "Stage"
         File selectedFile = chooser.showOpenDialog(mainStage);
-        // Mostando nombre del fichero en el título del editor.
-        mainStage.setTitle(selectedFile.getName());
 
-        // Devolviendo contenido del fichero leido.
-        return openFile(selectedFile);
+        String content = "";
+
+        if (selectedFile != null) {
+            // Mostando nombre del fichero en el título del editor.
+            mainStage.setTitle(selectedFile.getName());
+            content = openFile(selectedFile);
+        }
+        return content;
     }
 
     /**
-     * Mostar diálogo para guardar fichero.
+     * Mostrar diálogo para guardar fichero.
      * @param content String a guardar en fichero.
      */
     private void showDialogToSave(String content) {
@@ -176,8 +180,10 @@ public class Controller {
         Stage mainStage = (Stage) root.getScene().getWindow();
         File f1 = fileToSave.showSaveDialog(mainStage);
 
-        // Guardando contennido.
-        saveFile(f1, content);
+        if (f1 != null ) {
+            // Guardando contennido.
+            saveFile(f1, content);
+        }
     }
 
     /**
@@ -186,14 +192,12 @@ public class Controller {
      * @param content a guardar en destino.
      */
     private void saveFile(File f1, String content) {
-        if (f1 != null) {
-            try {
-                FileWriter newFile = new FileWriter(f1);
-                newFile.write(content);
-                newFile.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            FileWriter newFile = new FileWriter(f1);
+            newFile.write(content);
+            newFile.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -204,18 +208,16 @@ public class Controller {
      */
     private String openFile(File selectedFile) {
         String text = "";
-        if (selectedFile != null) {
-            try {
-                // Cargar contenido del fichero seleccionado.
-                BufferedReader f1 = new BufferedReader(new FileReader(selectedFile));
-                // Mientras el buffer no este vacío, leo linea.
-                while (f1.ready()) {
-                    text += f1.readLine()+"\n";
-                }
-                f1.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+        try {
+            // Cargar contenido del fichero seleccionado.
+            BufferedReader f1 = new BufferedReader(new FileReader(selectedFile));
+            // Mientras el buffer no este vacío, leo linea.
+            while (f1.ready()) {
+                text += f1.readLine()+"\n";
             }
+            f1.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return text;
     }
