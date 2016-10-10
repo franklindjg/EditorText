@@ -134,7 +134,7 @@ public class Controller {
     }
 
     /**
-     * Mostar diálogo para seleccionar un fichero.
+     * Mostrar diálogo para seleccionar un fichero.
      * @return String contenido del fichero seleccionado.
      */
     private String showDialoToOpen() {
@@ -150,6 +150,7 @@ public class Controller {
         File selectedFile = chooser.showOpenDialog(mainStage);
         // Mostando nombre del fichero en el título del editor.
         mainStage.setTitle(selectedFile.getName());
+
         // Leyendo fichero
         return openFile(selectedFile);
     }
