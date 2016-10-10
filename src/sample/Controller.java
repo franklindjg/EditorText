@@ -38,7 +38,7 @@ public class Controller {
     Parent root;
 
 
-    // Compartiendo evento onAction.
+    // Compartiendo evento onClick para botones, items de menú y item seleccionable de menú.
     public void onClick(ActionEvent e) {
 
         // Auxiliares
@@ -48,7 +48,7 @@ public class Controller {
         String x;
         Class classReference = e.getSource().getClass();
 
-        // Clase?
+        // Qué tipo de clase devuelve getSource?
         if (classReference == Button.class) {
             btn = (Button) e.getSource();
             x = btn.getText();
@@ -159,7 +159,7 @@ public class Controller {
         String content = "";
 
         if (selectedFile != null) {
-            // Mostando nombre del fichero en el título del editor.
+            // Mostrando nombre del fichero en el título del editor.
             mainStage.setTitle(selectedFile.getName());
             content = openFile(selectedFile);
         }
@@ -181,14 +181,14 @@ public class Controller {
         File f1 = fileToSave.showSaveDialog(mainStage);
 
         if (f1 != null ) {
-            // Guardando contennido.
+            // Guardando contenido.
             saveFile(f1, content);
         }
     }
 
     /**
      * Guardar contenido en fichero de texto.
-     * @param f1 destino.
+     * @param f1 fichero destino File.
      * @param content a guardar en destino.
      */
     private void saveFile(File f1, String content) {
@@ -203,7 +203,7 @@ public class Controller {
 
     /**
      * Cargar contenido de un fichero pasado por parámetro.
-     * @param selectedFile fichero.
+     * @param selectedFile fichero File.
      * @return String contenido del fichero.
      */
     private String openFile(File selectedFile) {
