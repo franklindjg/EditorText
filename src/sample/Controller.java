@@ -148,7 +148,8 @@ public class Controller {
         Stage mainStage = (Stage) root.getScene().getWindow();
         // Abriendo diálogo en nuestro contexto -> "Stage"
         File selectedFile = chooser.showOpenDialog(mainStage);
-
+        // Mostando nombre del fichero en el título del editor.
+        mainStage.setTitle(selectedFile.getName());
         // Leyendo fichero
         return openFile(selectedFile);
     }
