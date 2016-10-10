@@ -158,7 +158,7 @@ public class Controller {
         // Mostando nombre del fichero en el título del editor.
         mainStage.setTitle(selectedFile.getName());
 
-        // Leyendo fichero
+        // Devolviendo contenido del fichero leido.
         return openFile(selectedFile);
     }
 
