@@ -42,7 +42,6 @@ public class Controller {
     @FXML
     private Parent root;
 
-
     // Compartiendo evento onClick para botones, items de menú y item seleccionable de menú.
     public void onClick(ActionEvent e) {
 
@@ -135,7 +134,7 @@ public class Controller {
     /**
      * Deshabilitar opción Copiar y Cortar de la barra de herramienta
      * si el usuario no selecciona ningún texto.
-     * @param mouseEvent
+     * @param mouseEvent callback.
      */
     public void mouseIn(MouseEvent mouseEvent) {
         texto.selectionProperty().addListener((observable, oldValue, newValue) -> {
