@@ -5,14 +5,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.*;
 
-public class openDialog {
+class openDialog {
 
     /**
      * Mostrar diálogo para seleccionar un fichero.
      * @return String contenido del fichero seleccionado.
      * @param root Stage.
      */
-    public static String showDialoToOpen(Parent root) {
+    static String showDialoToOpen(Parent root) {
 
         FileChooser chooser = new FileChooser();
 
@@ -39,7 +39,7 @@ public class openDialog {
      * @param content String a guardar en fichero.
      * @param root Stage.
      */
-    public static void showDialogToSave(String content, Parent root) {
+    static void showDialogToSave(String content, Parent root) {
 
         FileChooser fileToSave = new FileChooser();
 
@@ -60,7 +60,7 @@ public class openDialog {
      * @param f1 fichero destino File.
      * @param content a guardar en destino.
      */
-    private static void saveFile(File f1, String content) {
+     private static void saveFile(File f1, String content) {
         try {
             FileWriter newFile = new FileWriter(f1);
             newFile.write(content);
