@@ -177,7 +177,7 @@ public class Controller {
         FileChooser chooser = new FileChooser();
 
         // Set extención del fichero.
-        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de Text","*.txt");
+        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de text","*.txt");
         chooser.setTitle("Selecciona un fitxer");
         chooser.getExtensionFilters().add(filtro);
         Stage mainStage = (Stage) root.getScene().getWindow();
@@ -203,7 +203,7 @@ public class Controller {
         FileChooser fileToSave = new FileChooser();
 
         // Set extención del fichero.
-        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de Text","*.txt");
+        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de text","*.txt");
         fileToSave.getExtensionFilters().add(filtro);
         Stage mainStage = (Stage) root.getScene().getWindow();
         File f1 = fileToSave.showSaveDialog(mainStage);
