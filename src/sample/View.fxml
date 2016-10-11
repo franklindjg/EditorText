@@ -47,8 +47,8 @@
                </Menu>
             </MenuBar>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
-               <Button mnemonicParsing="false" onAction="#onClick" text="Copiar" />
-               <Button mnemonicParsing="false" onAction="#onClick" text="Tallar" />
+               <Button fx:id="tBarCopiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
+               <Button fx:id="tBarCortar" mnemonicParsing="false" onAction="#onClick" text="Tallar" />
                <Button mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
             </ToolBar>
          </VBox>
