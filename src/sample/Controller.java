@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -19,9 +20,13 @@ public class Controller {
     @FXML
     private TextArea texto;
     @FXML
-    private MenuItem Cortar;
+    public Button tBarCopiar;
+    @FXML
+    public Button tBarCortar;
     @FXML
     private MenuItem Copiar;
+    @FXML
+    private MenuItem Cortar;
     @FXML
     private CheckMenuItem Calibri;
     @FXML
@@ -35,7 +40,7 @@ public class Controller {
     @FXML
     private CheckMenuItem size24;
     @FXML
-    Parent root;
+    private Parent root;
 
 
     // Compartiendo evento onClick para botones, items de menú y item seleccionable de menú.
@@ -128,7 +133,24 @@ public class Controller {
     }
 
     /**
-     * Deshabilitar opción Copiar y Cortar si el usuario no selecciona ningún texto.
+     * Deshabilitar opción Copiar y Cortar de la barra de herramienta
+     * si el usuario no selecciona ningún texto.
+     * @param mouseEvent
+     */
+    public void mouseIn(MouseEvent mouseEvent) {
+        texto.selectionProperty().addListener((observable, oldValue, newValue) -> {
+            if (texto.getSelectedText().equalsIgnoreCase("")) {
+                tBarCopiar.setDisable(true);
+                tBarCortar.setDisable(true);
+            } else {
+                tBarCopiar.setDisable(false);
+                tBarCortar.setDisable(false);
+            }
+        });
+    }
+
+    /**
+     * Deshabilitar opción Copiar y Cortar del menú Editar si el usuario no selecciona ningún texto.
      */
     public void onShowing() {
         if (texto.getSelectedText().equalsIgnoreCase("")) {
@@ -220,5 +242,13 @@ public class Controller {
             e.printStackTrace();
         }
         return text;
+    }
+
+    /**
+     * Deshabilitar Copiar y Cortar de la barra de herramienta al iniciar la aplicación.
+     */
+    public void initialize() {
+        tBarCopiar.setDisable(true);
+        tBarCortar.setDisable(true);
     }
 }
