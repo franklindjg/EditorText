@@ -14,7 +14,7 @@
 <AnchorPane fx:id="root" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <BorderPane prefHeight="500.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-         <TextArea fx:id="texto" onMouseEntered="#mouseIn" prefHeight="430.0" prefWidth="700.0" promptText="Write" BorderPane.alignment="CENTER" />
+         <TextArea fx:id="texto" onMouseEntered="#mouseIn" prefHeight="500.0" prefWidth="700.0" promptText="Write" BorderPane.alignment="CENTER" />
       </center>
       <top>
          <VBox prefHeight="23.0" prefWidth="700.0" BorderPane.alignment="CENTER">
