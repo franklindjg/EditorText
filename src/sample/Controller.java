@@ -15,6 +15,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
 
+/**
+ * Controller para manejar eventos de un editor de texto simple
+ * onClick, onShowing, onSelected y mouseIn.
+ *
+ * @author Franklin De Jesús Gómez
+ * @version 2.2
+ */
 public class Controller {
 
     @FXML
