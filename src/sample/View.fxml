@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <BorderPane prefHeight="500.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-         <TextArea fx:id="texto" onMouseEntered="#mouseIn" prefHeight="500.0" prefWidth="700.0" promptText="Write" BorderPane.alignment="CENTER" />
+         <TextArea fx:id="texto" onMouseEntered="#mouseIn" promptText="Write" BorderPane.alignment="CENTER" />
       </center>
       <top>
-         <VBox prefHeight="23.0" prefWidth="700.0" BorderPane.alignment="CENTER">
-            <MenuBar prefHeight="32.0" prefWidth="710.0">
+         <VBox BorderPane.alignment="CENTER">
+            <MenuBar>
                <Menu mnemonicParsing="false" text="Fitxer">
                   <MenuItem mnemonicParsing="false" onAction="#onClick" text="Obre" />
                   <MenuItem mnemonicParsing="false" onAction="#onClick" text="Desar" />
@@ -46,7 +46,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#onClick" text="About" />
                </Menu>
             </MenuBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <ToolBar>
                <Button fx:id="tBarCopiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
                <Button fx:id="tBarCortar" mnemonicParsing="false" onAction="#onClick" text="Tallar" />
                <Button mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
