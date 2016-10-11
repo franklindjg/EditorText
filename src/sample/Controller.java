@@ -75,10 +75,10 @@ public class Controller {
 
         switch (x) {
             case "Obre":
-                texto.setText(showDialoToOpen());
+                texto.setText(openDialog.showDialoToOpen(root));
                 break;
             case "Desar":
-                showDialogToSave(texto.getText());
+                openDialog.showDialogToSave(texto.getText(), root);
             break;
             case "Tancar":
                 Platform.exit();
@@ -144,7 +144,7 @@ public class Controller {
      * @param mouseEvent callback.
      */
     public void mouseIn(MouseEvent mouseEvent) {
-        texto.selectionProperty().addListener((observable, oldValue, newValue) -> {
+        texto.selectionProperty().addListener((observable) -> {
             if (texto.getSelectedText().equalsIgnoreCase("")) {
                 tBarCopiar.setDisable(true);
                 tBarCortar.setDisable(true);
@@ -166,88 +166,6 @@ public class Controller {
             Copiar.setDisable(false);
             Cortar.setDisable(false);
         }
-    }
-
-    /**
-     * Mostrar diálogo para seleccionar un fichero.
-     * @return String contenido del fichero seleccionado.
-     */
-    private String showDialoToOpen() {
-
-        FileChooser chooser = new FileChooser();
-
-        // Set extención del fichero.
-        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de text","*.txt");
-        chooser.setTitle("Selecciona un fitxer");
-        chooser.getExtensionFilters().add(filtro);
-        Stage mainStage = (Stage) root.getScene().getWindow();
-        // Abriendo diálogo en nuestro contexto -> "Stage"
-        File selectedFile = chooser.showOpenDialog(mainStage);
-
-        String content = "";
-
-        if (selectedFile != null) {
-            // Mostrando nombre del fichero en el título del editor.
-            mainStage.setTitle(selectedFile.getName());
-            content = openFile(selectedFile);
-        }
-        return content;
-    }
-
-    /**
-     * Mostrar diálogo para guardar fichero.
-     * @param content String a guardar en fichero.
-     */
-    private void showDialogToSave(String content) {
-
-        FileChooser fileToSave = new FileChooser();
-
-        // Set extención del fichero.
-        FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de text","*.txt");
-        fileToSave.getExtensionFilters().add(filtro);
-        Stage mainStage = (Stage) root.getScene().getWindow();
-        File f1 = fileToSave.showSaveDialog(mainStage);
-
-        if (f1 != null ) {
-            // Guardando contenido.
-            saveFile(f1, content);
-        }
-    }
-
-    /**
-     * Guardar contenido en fichero de texto.
-     * @param f1 fichero destino File.
-     * @param content a guardar en destino.
-     */
-    private void saveFile(File f1, String content) {
-        try {
-            FileWriter newFile = new FileWriter(f1);
-            newFile.write(content);
-            newFile.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Cargar contenido de un fichero pasado por parámetro.
-     * @param selectedFile fichero File.
-     * @return String contenido del fichero.
-     */
-    private String openFile(File selectedFile) {
-        String text = "";
-        try {
-            // Cargar contenido del fichero seleccionado.
-            BufferedReader f1 = new BufferedReader(new FileReader(selectedFile));
-            // Mientras el buffer no este vacío, leo linea.
-            while (f1.ready()) {
-                text += f1.readLine()+"\n";
-            }
-            f1.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return text;
     }
 
     /**
