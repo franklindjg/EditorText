@@ -53,7 +53,19 @@ public class Controller {
         double sizeFont = texto.getFont().getSize();
         String familyFont = texto.getFont().getFamily();
 
-        // Verificar el tipo del objecto devuelto
+        CheckMenuItem familyList [] = {
+                Calibri,
+                Consolas,
+                Courier
+        };
+
+        CheckMenuItem sizeList [] = {
+                size12,
+                size14,
+                size24
+        };
+
+        // Verificar tipo del objecto devuelto
         if (classReference == Button.class) {
             btnAun = (Button) e.getSource();
             option = btnAun.getText();
@@ -95,50 +107,56 @@ public class Controller {
                 break;
             case "Calibri":
                 texto.setFont(Font.font("Calibri", sizeFont));
-                if (Consolas.isSelected()) {
-                    Consolas.setSelected(false);
-                } else {
-                    Courier.setSelected(false);
+                for (CheckMenuItem item: familyList) {
+                    if (!item.getId().equalsIgnoreCase("Calibri") && item.isSelected()) {
+                        item.setSelected(false);
+                        return;
+                    }
                 }
                 break;
             case "Courier New":
                 texto.setFont(Font.font("Courier New", sizeFont));
-                if (Calibri.isSelected()) {
-                    Calibri.setSelected(false);
-                } else {
-                    Consolas.setSelected(false);
+                for (CheckMenuItem item: familyList) {
+                    if (!item.getId().equalsIgnoreCase("Courier") && item.isSelected()) {
+                        item.setSelected(false);
+                        return;
+                    }
                 }
                 break;
             case "Consolas":
                 texto.setFont(Font.font("Consolas", sizeFont));
-                if (Courier.isSelected()) {
-                    Courier.setSelected(false);
-                } else {
-                    Calibri.setSelected(false);
+                for (CheckMenuItem item: familyList) {
+                    if (!item.getId().equalsIgnoreCase("Consolas") && item.isSelected()) {
+                        item.setSelected(false);
+                        return;
+                    }
                 }
                 break;
             case "12px":
                 texto.setFont(Font.font(familyFont, 12));
-                if (size14.isSelected()) {
-                    size14.setSelected(false);
-                } else {
-                    size24.setSelected(false);
+                for (CheckMenuItem item: sizeList) {
+                    if (!item.getId().equalsIgnoreCase("size12") && item.isSelected()) {
+                        item.setSelected(false);
+                        return;
+                    }
                 }
                 break;
             case "14px":
                 texto.setFont(Font.font(familyFont, 14));
-                if (size12.isSelected()) {
-                    size12.setSelected(false);
-                } else {
-                    size24.setSelected(false);
+                for (CheckMenuItem item: sizeList) {
+                    if (!item.getId().equalsIgnoreCase("size14") && item.isSelected()) {
+                        item.setSelected(false);
+                        return;
+                    }
                 }
                 break;
             case "24px":
                 texto.setFont(Font.font(familyFont, 24));
-                if (size12.isSelected()) {
-                    size12.setSelected(false);
-                } else {
-                    size14.setSelected(false);
+                for (CheckMenuItem item: sizeList) {
+                    if (!item.getId().equalsIgnoreCase("size24") && item.isSelected()) {
+                        item.setSelected(false);
+                        return;
+                    }
                 }
                 break;
             case "About":
