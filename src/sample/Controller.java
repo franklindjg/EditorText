@@ -72,7 +72,7 @@ public class Controller {
                 break;
             case "Desar":
                 openDialog.showDialogToSave(texto.getText(), root);
-            break;
+                break;
             case "Tancar":
                 Platform.exit();
                 break;
@@ -136,7 +136,7 @@ public class Controller {
      * si el usuario no selecciona ningún texto.
      * @param mouseEvent callback.
      */
-    public void mouseIn(MouseEvent mouseEvent) {
+    public void onMouseIn(MouseEvent mouseEvent) {
         texto.selectionProperty().addListener((observable) -> {
             if (texto.getSelectedText().equalsIgnoreCase("")) {
                 tBarCopiar.setDisable(true);
