@@ -42,31 +42,32 @@ public class Controller {
     @FXML
     private Parent root;
 
-    // Compartiendo evento onClick para botones, items de menú y item seleccionable de menú.
     public void onClick(ActionEvent e) {
 
-        // Auxiliares
+        // Variables auxiliares
         MenuItem itemAux;
         CheckMenuItem checkItemAux;
-        Button btn;
-        String x;
+        Button btnAun;
+        String option;
         Class classReference = e.getSource().getClass();
+        double sizeFont = texto.getFont().getSize();
+        String familyFont = texto.getFont().getFamily();
 
-        // Qué tipo de clase devuelve getSource?
+        // Verificar el tipo del objecto devuelto
         if (classReference == Button.class) {
-            btn = (Button) e.getSource();
-            x = btn.getText();
+            btnAun = (Button) e.getSource();
+            option = btnAun.getText();
         } else if(classReference == CheckMenuItem.class) {
             checkItemAux = (CheckMenuItem) e.getSource();
-            x = checkItemAux.getText();
+            option = checkItemAux.getText();
         } else {
             itemAux = (MenuItem) e.getSource();
-            x = itemAux.getText();
+            option = itemAux.getText();
         }
 
-        System.out.println(x);
+        System.out.println(option);
 
-        switch (x) {
+        switch (option) {
             case "Obre":
                 texto.setText(openDialog.showDialoToOpen(root));
                 break;
@@ -93,34 +94,52 @@ public class Controller {
                 texto.requestFocus();
                 break;
             case "Calibri":
-                texto.setFont(Font.font("Calibri", texto.getFont().getSize()));
-                if (Consolas.isSelected()) Consolas.setSelected(false);
-                else Courier.setSelected(false);
+                texto.setFont(Font.font("Calibri", sizeFont));
+                if (Consolas.isSelected()) {
+                    Consolas.setSelected(false);
+                } else {
+                    Courier.setSelected(false);
+                }
                 break;
             case "Courier New":
-                texto.setFont(Font.font("Courier New", texto.getFont().getSize()));
-                if (Calibri.isSelected())Calibri.setSelected(false);
-                else Consolas.setSelected(false);
+                texto.setFont(Font.font("Courier New", sizeFont));
+                if (Calibri.isSelected()) {
+                    Calibri.setSelected(false);
+                } else {
+                    Consolas.setSelected(false);
+                }
                 break;
             case "Consolas":
-                texto.setFont(Font.font("Consolas", texto.getFont().getSize()));
-                if (Courier.isSelected()) Courier.setSelected(false);
-                else Calibri.setSelected(false);
+                texto.setFont(Font.font("Consolas", sizeFont));
+                if (Courier.isSelected()) {
+                    Courier.setSelected(false);
+                } else {
+                    Calibri.setSelected(false);
+                }
                 break;
             case "12px":
-                texto.setFont(Font.font(texto.getFont().getFamily(), 12));
-                if (size14.isSelected())  size14.setSelected(false);
-                else size24.setSelected(false);
+                texto.setFont(Font.font(familyFont, 12));
+                if (size14.isSelected()) {
+                    size14.setSelected(false);
+                } else {
+                    size24.setSelected(false);
+                }
                 break;
             case "14px":
-                texto.setFont(Font.font(texto.getFont().getFamily(), 14));
-                if (size12.isSelected())  size12.setSelected(false);
-                else size24.setSelected(false);
+                texto.setFont(Font.font(familyFont, 14));
+                if (size12.isSelected()) {
+                    size12.setSelected(false);
+                } else {
+                    size24.setSelected(false);
+                }
                 break;
             case "24px":
-                texto.setFont(Font.font(texto.getFont().getFamily(), 24));
-                if (size12.isSelected())  size12.setSelected(false);
-                else size14.setSelected(false);
+                texto.setFont(Font.font(familyFont, 24));
+                if (size12.isSelected()) {
+                    size12.setSelected(false);
+                } else {
+                    size14.setSelected(false);
+                }
                 break;
             case "About":
                 Alert info = new Alert(Alert.AlertType.INFORMATION);
@@ -131,13 +150,8 @@ public class Controller {
         }
     }
 
-    /**
-     * Deshabilitar opción Copiar y Cortar de la barra de herramienta
-     * si el usuario no selecciona ningún texto.
-     * @param mouseEvent callback.
-     */
     public void onMouseIn(MouseEvent mouseEvent) {
-        texto.selectionProperty().addListener((observable) -> {
+        texto.selectionProperty().addListener(observable -> {
             if (texto.getSelectedText().equalsIgnoreCase("")) {
                 tBarCopiar.setDisable(true);
                 tBarCortar.setDisable(true);
@@ -148,9 +162,6 @@ public class Controller {
         });
     }
 
-    /**
-     * Deshabilitar opción Copiar y Cortar del menú Editar si el usuario no selecciona ningún texto.
-     */
     public void onShowing() {
         if (texto.getSelectedText().equalsIgnoreCase("")) {
             Copiar.setDisable(true);
@@ -161,9 +172,6 @@ public class Controller {
         }
     }
 
-    /**
-     * Deshabilitar Copiar y Cortar de la barra de herramienta al iniciar la aplicación.
-     */
     public void initialize() {
         tBarCopiar.setDisable(true);
         tBarCortar.setDisable(true);
