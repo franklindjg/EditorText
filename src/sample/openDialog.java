@@ -13,14 +13,13 @@ import java.io.*;
 class openDialog {
 
     /**
-     * Mostrar diálogo para seleccionar fichero.
-     * @return String contenido cargado del fichero seleccionado.
-     * @param root Stage donde se mostrará el diálogo.
+     * Abrir diálogo para abrir fichero.
+     * @param root Stage
+     * @return String
      */
     static String showDialoToOpen(Parent root) {
 
         FileChooser chooser = new FileChooser();
-
         // Set extención del fichero.
         FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de text","*.txt");
         chooser.setTitle("Selecciona un fitxer");
@@ -32,7 +31,6 @@ class openDialog {
         String content = "";
 
         if (selectedFile != null) {
-            // Mostrando nombre del fichero en el título del editor.
             mainStage.setTitle(selectedFile.getName());
             content = openFile(selectedFile);
         }
@@ -40,30 +38,27 @@ class openDialog {
     }
 
     /**
-     * Mostrar diálogo para guardar fichero.
-     * @param content String a guardar en fichero.
-     * @param root Stage donde se mostrará el diálogo.
+     * Abrir diálogo para guardar fichero.
+     * @param content String
+     * @param root Stage
      */
     static void showDialogToSave(String content, Parent root) {
 
-        FileChooser fileToSave = new FileChooser();
-
-        // Set extención del fichero.
+        FileChooser chooser = new FileChooser();
         FileChooser.ExtensionFilter filtro = new FileChooser.ExtensionFilter("Arxiu de text","*.txt");
-        fileToSave.getExtensionFilters().add(filtro);
+        chooser.getExtensionFilters().add(filtro);
         Stage mainStage = (Stage) root.getScene().getWindow();
-        File f = fileToSave.showSaveDialog(mainStage);
+        File f = chooser.showSaveDialog(mainStage);
 
         if (f != null ) {
-            // Guardando contenido.
             saveFile(f, content);
         }
     }
 
     /**
-     * Guardar contenido en fichero de texto.
-     * @param f fichero destino File.
-     * @param content a guardar en fichero destino.
+     * Guardar fichero.
+     * @param f fichero
+     * @param content String
      */
      private static void saveFile(File f, String content) {
         try {
@@ -76,14 +71,13 @@ class openDialog {
     }
 
     /**
-     * Cargar contenido de un fichero pasado por parámetro.
-     * @param selectedFile fichero File.
-     * @return String contenido del fichero cargado.
+     * Abrir fichero.
+     * @param selectedFile fichero
+     * @return String
      */
     private static String openFile(File selectedFile) {
         String text = "";
         try {
-            // Cargar contenido del fichero seleccionado.
             BufferedReader f = new BufferedReader(new FileReader(selectedFile));
             // Mientras el buffer no este vacío, leo linea.
             while (f.ready()) {
