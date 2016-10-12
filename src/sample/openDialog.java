@@ -17,7 +17,7 @@ class openDialog {
      * @param root Stage
      * @return String
      */
-    static String showDialoToOpen(Parent root) {
+    static String showDialogToOpen(Parent root) {
 
         FileChooser chooser = new FileChooser();
         // Set extención del fichero.

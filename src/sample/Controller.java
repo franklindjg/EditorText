@@ -81,7 +81,7 @@ public class Controller {
 
         switch (option) {
             case "Obre":
-                texto.setText(openDialog.showDialoToOpen(root));
+                texto.setText(openDialog.showDialogToOpen(root));
                 break;
             case "Desar":
                 openDialog.showDialogToSave(texto.getText(), root);
@@ -108,7 +108,7 @@ public class Controller {
             case "Calibri":
                 texto.setFont(Font.font("Calibri", sizeFont));
                 for (CheckMenuItem item: familyList) {
-                    if (!item.getId().equalsIgnoreCase("Calibri") && item.isSelected()) {
+                    if (!item.getId().equalsIgnoreCase("calibri") && item.isSelected()) {
                         item.setSelected(false);
                         return;
                     }
@@ -117,7 +117,7 @@ public class Controller {
             case "Courier New":
                 texto.setFont(Font.font("Courier New", sizeFont));
                 for (CheckMenuItem item: familyList) {
-                    if (!item.getId().equalsIgnoreCase("Courier") && item.isSelected()) {
+                    if (!item.getId().equalsIgnoreCase("courier") && item.isSelected()) {
                         item.setSelected(false);
                         return;
                     }
@@ -126,7 +126,7 @@ public class Controller {
             case "Consolas":
                 texto.setFont(Font.font("Consolas", sizeFont));
                 for (CheckMenuItem item: familyList) {
-                    if (!item.getId().equalsIgnoreCase("Consolas") && item.isSelected()) {
+                    if (!item.getId().equalsIgnoreCase("consolas") && item.isSelected()) {
                         item.setSelected(false);
                         return;
                     }
