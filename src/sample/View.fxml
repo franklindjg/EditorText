@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -11,10 +13,23 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
-         <TextArea fx:id="texto" onMouseEntered="#onMouseIn" promptText="Write" BorderPane.alignment="CENTER" />
+         <TextArea fx:id="texto" onMouseEntered="#onMouseIn" promptText="Write" BorderPane.alignment="CENTER">
+            <contextMenu>
+               <ContextMenu onShowing="#onShowing">
+                 <items>
+                     <MenuItem fx:id="tCopiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
+                     <MenuItem fx:id="tCortar" mnemonicParsing="false" onAction="#onClick" text="Cortar" />
+                   <MenuItem mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
+                     <MenuItem mnemonicParsing="false" onAction="#onClick" text="Desfer" />
+                 </items>
+               </ContextMenu>
+            </contextMenu>
+            <cursor>
+               <Cursor fx:constant="DEFAULT" />
+            </cursor></TextArea>
       </center>
       <top>
          <VBox BorderPane.alignment="CENTER">
@@ -27,8 +42,8 @@
                <Menu mnemonicParsing="false" onShowing="#onShowing" text="Editar">
                   <MenuItem fx:id="Copiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
                   <MenuItem fx:id="Cortar" mnemonicParsing="false" onAction="#onClick" text="Tallar" />
-                  <MenuItem mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
-                  <MenuItem mnemonicParsing="false" onAction="#onClick" text="Desfer" />
+                  <MenuItem fx:id="Engaxar" mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
+                  <MenuItem fx:id="Desfer" mnemonicParsing="false" onAction="#onClick" text="Desfer" />
                </Menu>
                <Menu mnemonicParsing="false" text="Opcions">
                   <Menu mnemonicParsing="false" text="Font">

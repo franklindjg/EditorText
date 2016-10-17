@@ -24,6 +24,10 @@ public class Controller {
     @FXML
     public Button tBarCortar;
     @FXML
+    public MenuItem tCopiar;
+    @FXML
+    public MenuItem tCortar;
+    @FXML
     private MenuItem Copiar;
     @FXML
     private MenuItem Cortar;
@@ -184,9 +188,13 @@ public class Controller {
         if (texto.getSelectedText().equalsIgnoreCase("")) {
             Copiar.setDisable(true);
             Cortar.setDisable(true);
+            tCopiar.setDisable(true);
+            tCortar.setDisable(true);
         } else {
             Copiar.setDisable(false);
             Cortar.setDisable(false);
+            tCopiar.setDisable(false);
+            tCortar.setDisable(false);
         }
     }
 
