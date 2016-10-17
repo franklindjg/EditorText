@@ -32,55 +32,32 @@ public class Controller {
     @FXML
     private MenuItem Cortar;
     @FXML
-    private CheckMenuItem Calibri;
-    @FXML
-    private CheckMenuItem Courier;
-    @FXML
-    private CheckMenuItem Consolas;
-    @FXML
-    private CheckMenuItem size12;
-    @FXML
-    private CheckMenuItem size14;
-    @FXML
-    private CheckMenuItem size24;
-    @FXML
     private Parent root;
 
     public void onClick(ActionEvent e) {
 
         // Variables auxiliares
         MenuItem itemAux;
-        CheckMenuItem checkItemAux;
+        RadioMenuItem radioItemAux;
         Button btnAun;
         String option;
         Class classReference = e.getSource().getClass();
         double sizeFont = texto.getFont().getSize();
         String familyFont = texto.getFont().getFamily();
 
-        CheckMenuItem familyList [] = {
-                Calibri,
-                Consolas,
-                Courier
-        };
-
-        CheckMenuItem sizeList [] = {
-                size12,
-                size14,
-                size24
-        };
-
         // Verificar tipo del objecto devuelto
         if (classReference == Button.class) {
             btnAun = (Button) e.getSource();
             option = btnAun.getText();
-        } else if(classReference == CheckMenuItem.class) {
-            checkItemAux = (CheckMenuItem) e.getSource();
-            option = checkItemAux.getText();
+        } else if(classReference == RadioMenuItem.class) {
+            radioItemAux = (RadioMenuItem) e.getSource();
+            option = radioItemAux.getText();
         } else {
             itemAux = (MenuItem) e.getSource();
             option = itemAux.getText();
         }
 
+        // Show
         System.out.println(option);
 
         switch (option) {
@@ -111,57 +88,21 @@ public class Controller {
                 break;
             case "Calibri":
                 texto.setFont(Font.font("Calibri", sizeFont));
-                for (CheckMenuItem item: familyList) {
-                    if (!item.getId().equalsIgnoreCase("calibri") && item.isSelected()) {
-                        item.setSelected(false);
-                        return;
-                    }
-                }
                 break;
             case "Courier New":
                 texto.setFont(Font.font("Courier New", sizeFont));
-                for (CheckMenuItem item: familyList) {
-                    if (!item.getId().equalsIgnoreCase("courier") && item.isSelected()) {
-                        item.setSelected(false);
-                        return;
-                    }
-                }
                 break;
             case "Consolas":
                 texto.setFont(Font.font("Consolas", sizeFont));
-                for (CheckMenuItem item: familyList) {
-                    if (!item.getId().equalsIgnoreCase("consolas") && item.isSelected()) {
-                        item.setSelected(false);
-                        return;
-                    }
-                }
                 break;
             case "12px":
                 texto.setFont(Font.font(familyFont, 12));
-                for (CheckMenuItem item: sizeList) {
-                    if (!item.getId().equalsIgnoreCase("size12") && item.isSelected()) {
-                        item.setSelected(false);
-                        return;
-                    }
-                }
                 break;
             case "14px":
                 texto.setFont(Font.font(familyFont, 14));
-                for (CheckMenuItem item: sizeList) {
-                    if (!item.getId().equalsIgnoreCase("size14") && item.isSelected()) {
-                        item.setSelected(false);
-                        return;
-                    }
-                }
                 break;
             case "24px":
                 texto.setFont(Font.font(familyFont, 24));
-                for (CheckMenuItem item: sizeList) {
-                    if (!item.getId().equalsIgnoreCase("size24") && item.isSelected()) {
-                        item.setSelected(false);
-                        return;
-                    }
-                }
                 break;
             case "About":
                 Alert info = new Alert(Alert.AlertType.INFORMATION);
