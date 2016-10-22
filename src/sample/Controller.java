@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 
@@ -20,13 +22,15 @@ public class Controller {
     @FXML
     private TextArea texto;
     @FXML
-    public Button tBarCopiar;
+    private Button tBarCopiar;
     @FXML
-    public Button tBarCortar;
+    private Button tBarCortar;
     @FXML
-    public MenuItem tCopiar;
+    private Button tBarEnganxar;
     @FXML
-    public MenuItem tCortar;
+    private MenuItem tCopiar;
+    @FXML
+    private MenuItem tCortar;
     @FXML
     private MenuItem Copiar;
     @FXML
@@ -140,6 +144,15 @@ public class Controller {
     }
 
     public void initialize() {
+
+        Image copiar = new Image(getClass().getResourceAsStream("ic_content_copy_black_18dp.png"));
+        Image cortar = new Image(getClass().getResourceAsStream("ic_content_cut_black_18dp.png"));
+        Image enganxar = new Image(getClass().getResourceAsStream("ic_content_paste_black_18dp.png"));
+
+        tBarCopiar.setGraphic(new ImageView(copiar));
+        tBarCortar.setGraphic(new ImageView(cortar));
+        tBarEnganxar.setGraphic(new ImageView(enganxar));
+
         tBarCopiar.setDisable(true);
         tBarCortar.setDisable(true);
     }

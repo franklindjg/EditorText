@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <center>
          <TextArea fx:id="texto" onMouseEntered="#onMouseIn" promptText="Write" BorderPane.alignment="CENTER">
@@ -22,7 +22,7 @@
                <ContextMenu onShowing="#onShowing">
                  <items>
                      <MenuItem fx:id="tCopiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
-                     <MenuItem fx:id="tCortar" mnemonicParsing="false" onAction="#onClick" text="Cortar" />
+                     <MenuItem fx:id="tCortar" mnemonicParsing="false" onAction="#onClick" text="Tallar" />
                    <MenuItem mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
                      <MenuItem mnemonicParsing="false" onAction="#onClick" text="Desfer" />
                  </items>
@@ -44,7 +44,7 @@
                   <MenuItem fx:id="Copiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
                   <MenuItem fx:id="Cortar" mnemonicParsing="false" onAction="#onClick" text="Tallar" />
                   <MenuItem fx:id="Engaxar" mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
-                  <MenuItem fx:id="Desfer" mnemonicParsing="false" onAction="#onClick" text="Desfer" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClick" text="Desfer" />
                </Menu>
                <Menu mnemonicParsing="false" text="Opcions">
                   <Menu mnemonicParsing="false" text="Font">
@@ -77,7 +77,7 @@
             <ToolBar>
                <Button fx:id="tBarCopiar" mnemonicParsing="false" onAction="#onClick" text="Copiar" />
                <Button fx:id="tBarCortar" mnemonicParsing="false" onAction="#onClick" text="Tallar" />
-               <Button mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
+               <Button fx:id="tBarEnganxar" mnemonicParsing="false" onAction="#onClick" text="Enganxar" />
             </ToolBar>
          </VBox>
       </top>
